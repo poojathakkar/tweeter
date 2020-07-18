@@ -41,32 +41,32 @@ const createTweetElement = (data) => {
       </article>
   `;
   return $tweet;
-}
+};
 
 const loadTweets = function() {
   $.ajax({ url: '/tweets', method: 'GET' })
     .then(function(tweets) {
       renderTweets(tweets);
-    })
- };
+    });
+};
 
 const escape =  function(str) {
   let div = document.createElement('div');
   div.appendChild(document.createTextNode(str));
-  console.log(div.innerHTML)
+  console.log(div.innerHTML);
   return div.innerHTML;
-}
+};
 
 $(document).ready(function() {
-  //for error message to be disappear as soon as it is in the limit 
-  $("#tweet-text").keypress( function() {
+  //for error message to be disappear as soon as it is in the limit
+  $("#tweet-text").keypress(function() {
     if ($('#tweet-text').val().length > 0) {
       $('.empty-tweet').slideUp();
     }
     if ($('#tweet-text').val().length < 140) {
       $('.too-long').slideUp();
     }
-  })
+  });
   loadTweets();
   $('.tweetform').on('submit', function(evt)  {
     evt.preventDefault();
@@ -82,23 +82,23 @@ $(document).ready(function() {
     } else {
       $('.too-long').slideUp();
       $('.empty-tweet').slideUp();
-    // load tweets here using ajax
+      // load tweets here using ajax
       $('#tweet-text').val('');
       $.ajax({
         url: "/tweets",
         method: 'POST',
         data: data
       }).then(function(response) {
-      console.log(response);
-      //set the counter to 140
-      $("output.counter").text(140);
-      //to slide up the tweet if condition of null and too long is invalid
-      $('.too-long').slideUp();
-      $('.empty-tweet').slideUp();
-      // load tweets here using ajax
-      loadTweets();
+        console.log(response);
+        //set the counter to 140
+        $("output.counter").text(140);
+        //to slide up the tweet if condition of null and too long is invalid
+        $('.too-long').slideUp();
+        $('.empty-tweet').slideUp();
+        // load tweets here using ajax
+        loadTweets();
       }).catch((e) => console.log(e));
     }
-  })
+  });
 });
 
