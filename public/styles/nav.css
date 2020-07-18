@@ -1,0 +1,35 @@
+.nav {
+  height: 120px;
+  width: 100%;
+  color: #ffffff;
+  background-color: #4056A1;
+  padding: 1.5em;
+  font-family: Bungee; 
+  position: fixed;
+  top: 0px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+#compose-new {
+  display: flex; 
+  flex-direction: column; 
+  font-size: 15px; 
+  font-family: sans-serif;
+}
+.new-compose-tweet {
+  background-color: transparent;
+  color:red;
+  border-style: none;
+  cursor: pointer;
+  outline: none;
+} 
+
+@media only screen and (max-width: 1024px) {
+  .nav {
+    background-color: darkgoldenrod;
+    padding-top: 1.5em; 
+  }
+}
+
