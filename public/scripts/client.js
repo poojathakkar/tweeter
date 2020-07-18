@@ -90,8 +90,7 @@ $(document).ready(function() {
         data: data
       }).then(function(response) {
       console.log(response);
-      //remove tweets from the tweet container      
-      $('.tweet-container').empty();
+      //set the counter to 140
       $("output.counter").text(140);
       //to slide up the tweet if condition of null and too long is invalid
       $('.too-long').slideUp();
